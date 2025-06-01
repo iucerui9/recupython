@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Votaciones Casino</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>¡Valora la teva experiència!</h1>
+        <form method="post">
+            <label for="dni">DNI:</label>
+            <input type="text" id="dni" name="dni" required>
+
+            <label for="poblacio">Població:</label>
+            <input type="text" id="poblacio" name="poblacio" required>
+
+            <label for="valoracions">Tu valoración:</label>
+            <select id="valoracions" name="valoracions" required>
+                {% for valoracio in valoracions %}
+                    <option value="{{ valoracio['id'] }}">{{ valoracio['descripcio'] }}</option>
+                {% endfor %}
+            </select>
+
+            <button type="submit">Enviar voto</button>
+            <button type="button" onclick="window.location.href='/votacions'" style="padding:10px 20px; font-size:16px; cursor:pointer;">
+                Ver todas las votaciones
+            </button>
+        </form>
+    </div>
+</body>
+</html>

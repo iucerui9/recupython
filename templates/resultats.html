@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <title>Resultats</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="casino">
+    <div class="container">
+        <h1>Valoracions Registrades</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>DNI</th>
+                    <th>poblacio</th>
+                    <th>Valoració</th>
+                    <th>Data i Hora</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for v in valoracions %}
+                <tr>
+                    <td>{{ v.dni }}</td>
+                    <td>{{ v.poblacio }}</td>
+                    <td>{{ v.valoracio }}</td>
+                    <td>{{ v.data_hora }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Votaciones registradas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Votaciones registradas</h1>
+
+        {% if error %}
+            <p style="color: red;">{{ error }}</p>
+        {% endif %}
+
+        {% if votos %}
+            <table border="1" cellpadding="8" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>DNI</th>
+                        <th>Población</th>
+                        <th>Valoración</th>
+                        <th>Fecha</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for voto in votos %}
+                        <tr>
+                            <td>{{ voto.dni }}</td>
+                            <td>{{ voto.poblacio }}</td>
+                            <td>{{ voto.valoracio }}</td>
+                            <td>{{ voto.fecha }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No hay votaciones registradas.</p>
+        {% endif %}
+
+        <br>
+        <button onclick="window.location.href='/'" style="padding:10px 20px; font-size:16px; cursor:pointer;">
+            Volver al formulario
+        </button>
+    </div>
+</body>
+</html>
